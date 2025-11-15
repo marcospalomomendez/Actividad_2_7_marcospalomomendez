@@ -6,8 +6,6 @@ import java.sql.*;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("INICIANDO PROGRAMA DE GESTION EMPRESARIAL");
-        System.out.println("==========================================\n");
 
         try (Connection conn = ConexionPool.getConnection()) {
 
@@ -36,11 +34,6 @@ public class Main {
             System.out.println("\nPASO 3: REALIZANDO TRANSACCION");
             System.out.println("------------------------------");
             realizarTransaccion(conn, 1, 1, 500);
-
-            // Paso 4: Mostrar resultados finales
-            System.out.println("\nESTADO FINAL DE LA BASE DE DATOS:");
-            System.out.println("==================================");
-            mostrarEstadoBD(conn);
 
             System.out.println("\nPROGRAMA EJECUTADO EXITOSAMENTE");
 
@@ -130,7 +123,6 @@ public class Main {
                 ps.setDouble(1, incremento);
                 ps.setInt(2, empId);
                 int filasAfectadas = ps.executeUpdate();
-                System.out.println("Salario actualizado - " + filasAfectadas + " fila(s) afectada(s)");
             }
 
             // Bajar presupuesto
@@ -138,7 +130,6 @@ public class Main {
                 ps.setDouble(1, incremento);
                 ps.setInt(2, projId);
                 int filasAfectadas = ps.executeUpdate();
-                System.out.println("Presupuesto actualizado - " + filasAfectadas + " fila(s) afectada(s)");
             }
 
             conn.commit();
